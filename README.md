@@ -11,7 +11,7 @@ pip install numpy pandas scikit-learn matplotlib seaborn
 
 ## Workflow
 
-Run the scripts in the following order, passing the drug name as an argument each time (e.g., `Brigatinib`). All scripts are located in the `scripts/` folder. In our test data
+Run the scripts in the following order, passing the drug name as an argument each time (e.g., `Brigatinib`). All scripts are located in the `scripts/` folder. You will have to create the response data by yourself
 
 ### Step 1: Multi-seed RFE Ranking
 
