@@ -53,12 +53,12 @@ if __name__ == '__main__':
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=random_state)
 
     # Standardizing data
-    scaler = StandardScaler()
+    scaler = StandardScaler() #change if you need any other scaler - RobustScaler() works well too with this data, from my experience
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
 
     # SVC with fixed parameters
-    svc = SVC(kernel='linear', C=1, class_weight='balanced', random_state=42)
+    svc = SVC(kernel='linear', C=1, class_weight='balanced', random_state=42) #or C=0.5
 
     # RFE
     rfe = RFE(estimator=svc, n_features_to_select=1)
