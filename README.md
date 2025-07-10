@@ -11,12 +11,12 @@ pip install numpy pandas scikit-learn matplotlib seaborn
 
 ## Workflow
 
-Run the scripts in the following order, passing the drug name as an argument each time (e.g., `Brigatinib`). All scripts are located in the `scripts/` folder. You will have to create the response data by yourself
+Run the scripts in the following order, passing the drug name as an argument each time (e.g., `DRUG_NAME`). All scripts are located in the `scripts/` folder. For this exercise, we already have the survival file ready based on the clinical metadata file provided by TCGA. 
 
 ### Step 1: Multi-seed RFE Ranking
 
 ```bash
-python scripts/1_run_rfe_multiseed.py Brigatinib
+python scripts/1_run_rfe_multiseed.py DRUG_NAME
 ```
 
 This code ranks features (genes) using recursive feature elimination (RFE) across 10 random seeds and outputs a combined ranking file.
@@ -24,7 +24,7 @@ This code ranks features (genes) using recursive feature elimination (RFE) acros
 ### Step 2: Consensus Filtering + Final RFE
 
 ```bash
-python scripts/2_final_rfe_consensus.py DUMMY_DRUG
+python scripts/2_final_rfe_consensus.py DRUG_NAME
 ```
 
 This code filters features that frequently appear in the top rankings and reruns RFE to produce a final ranked list.
@@ -32,14 +32,14 @@ This code filters features that frequently appear in the top rankings and reruns
 ### Step 3: Evaluate Feature Sets and Plot Results
 
 ```bash
-python scripts/3_evaluate_ranking_curve.py DUMMY_DRUG
+python scripts/3_evaluate_ranking_curve.py DRUG_NAME
 ```
 
 This iteratively evaluates models built with increasing numbers of top-ranked features and generates all final metrics and plots.
 
 ## Outputs
 
-All outputs are saved inside a folder named after the drug (e.g., `DUMMY_DRUG/`). These include:
+All outputs are saved inside a folder named after the drug (e.g., `DRUG_NAME/`). These include:
 
 - `biomarkers_firstrun.csv`: RFE rankings from multiple seeds
 - `[drug_name]_ranked_list_final_run.csv`: Final ranked gene list
